@@ -1,0 +1,9 @@
+Versão do Wildfly - wildfly-17.0.1.Final
+
+Verão connector mysql - mysql-connector-java-8.0.15
+
+===============================================================
+
+Colar pasta mysql no diretório "...wildfly-17.0.1.Final\modules\system\layers\base\com"
+
+Colar e substituir arquivo standalone no diretório wildfly-17.0.1.Final\standalone\configuration

@@ -1,0 +1,244 @@
+body#index {
+	height: 100%;
+	background: linear-gradient(rgb(241, 241, 241), #fff);
+	font-family: Noto Sans;
+}
+
+html {
+	height: 100%;
+}
+
+body, h1, h2, h3, h4, h5, p, ul, li, a {
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#organizar {
+	margin:0 auto;
+	max-width: 68%;
+	min-width: 1290px;
+}
+
+#centralizar-conteudo {
+	display:flex;
+	margin: 0 auto;
+	max-width: 100%;
+}
+
+
+
+/* TOPO */
+
+#topo {
+	border-radius: 50px;
+	background: linear-gradient(rgb(166, 208, 219), rgb(144, 207, 221));
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+	align-items: center;
+	height: 80px;
+	margin-bottom: 50px;
+}
+
+#topo h1 {
+	font-size: 40px;
+	color: white;
+	margin-top: 6px;
+	margin-right: 18px;
+	font-family: Candara;
+}
+
+#topo img {
+	width: 150px;
+}
+
+/* ************* */
+
+.ui-panelgrid .ui-panelgrid-cell {
+	border-width: none;
+	border-style: none;
+	border-color: none;
+	padding: 4px 10px;
+}
+
+.ui-widget-content {
+	border: none;
+	background: #fff;
+	color: #4f4f4f;
+}
+
+.ui-panelgrid {
+	border-collapse: solid;
+}
+
+/* Topo-Caixa-Cadastro-Editar */
+
+.tamanho-caixa-cadastro-editar {
+	position: absolute;
+	left: 30%;
+	top: 15%;
+	z-index: 2;
+	border-radius: 50px;
+}
+
+.ui-fieldset {
+	padding: 0px;
+}
+
+.topo-caixa-cadastro-editar {
+	text-align: center;
+	padding: 8px;
+	background: rgb(35, 190, 211);
+	color: white;
+	font-size: 12px;
+	!important
+}
+
+.formulario {
+	padding: 22px;
+	max-width: 550px;
+	box-shadow: 12px 12px 12px 0px #ccc;
+	border-radius: 15px;
+	background: rgb(253, 253, 253);
+}
+
+.formulario p {
+	display: inline-block;
+	margin-bottom: 12px;
+	color: #FF9933;
+	border-bottom: 1px solid #FF9933;
+	font-size: 13px;
+}
+
+.empurrar-botao-cadastrar-atualizar {
+	margin-top: 12px;
+	margin-left: 107px;
+}
+
+.ui-button {
+	border-radius: 15px;
+}
+
+.ui-button-text-only .ui-button-text {
+	background: black;
+	border-radius: 10px;
+	padding: .4em 1em;
+	color: white;
+	font-weight: normal;
+}
+
+/* DATA TABLES */
+
+#botao-adicionar-usuario-solto {
+	margin-bottom: 10px;
+}
+
+#tamanho-datatable-usuario {
+	width: 68%;
+	margin-right: 2%;
+}
+
+#tamanho-datatable-telefone {
+	z-index: 1;
+	max-width: 30%;
+}
+
+.ui-datatable thead th {
+	background: rgb(8, 147, 165);
+	color: white;
+	font-weight: normal;
+}
+
+.ui-state-default {
+	text-shadow: none;
+}
+
+.ui-widget-header {
+	text-shadow: none;
+}
+
+.ui-datatable .ui-datatable-header {
+	border-bottom: 0 none;
+	background: black;
+	color: white;
+	font-weight: normal;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default {
+	background: #fff;
+}
+
+/********** PAGINA LOGIN ADM ************/
+
+body#login-adm {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	height: 60%;
+	display: flex;
+	align-items: center;
+}
+
+#bg-login-adm {
+	width: 100%;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+#caixa-login-adm {
+	width: 370px;
+	height: 300px;
+	border: 3px solid rgb(3, 0, 0);
+	border-radius: 10px;
+	padding: 20px;
+	background: linear-gradient(to bottom, rgb(1, 117, 121), rgb(90, 89, 89));
+	z-index: 10;
+	position: relative;
+}
+
+#topo-login-adm h2 {
+	letter-spacing: 5px;
+	padding-bottom: 10px;
+	margin-left: 30px;
+	color: black;
+}
+
+#topo-login-adm {
+	border-bottom: 6px solid black;
+	border-radius: 15px;
+}
+
+#formulario-login {
+	position: absolute;
+	left: 15px;
+	bottom: 54px;
+}
+
+.ui-button-textt-only .ui-button-text {
+	color: black;
+	background: white;
+	font-weight: bold;
+}
+
+/****************** SAIR **********/
+
+#sair {
+	color: rgb(1, 117, 121);
+	font-size: 21px;
+	position: absolute;
+	right: 70px;
+	top: 50px;
+}
+
+a {
+	color: red;
+	text-decoration: none;
+}
+
+a:hover {
+	color: rgb(1, 117, 121);
+}

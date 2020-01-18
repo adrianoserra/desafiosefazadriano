@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Sistema</title>
+	<link rel="stylesheet" href="css/CSS.css" />
+</h:head>
+
+
+<h:body id="index">
+	<h:form>
+
+		<div id="topo">
+			<h1>Desafio</h1>
+			<img src="img/logomarca.png" alt=""> </img>
+		</div>
+
+		<div class="tamanho-caixa-cadastro-editar">
+			<p:fieldset rendered="#{usuarioBean.rendEsconderCadastroUsuario}">
+
+
+				<div class="topo-caixa-cadastro-editar">
+					<h1>Usuário</h1>
+				</div>
+				<div class="formulario">
+
+					<p>Todos os campos são de preenchimento obrigatório.</p>
+
+					<p:panelGrid columns="2">
+						<h:outputLabel for="nome" value="Nome:"></h:outputLabel>
+						<p:inputText id="nome" value="#{usuarioBean.usuario.nome}" maxlength="70"></p:inputText>
+
+						<h:outputLabel for="email" value="Email:"></h:outputLabel>
+						<p:inputText id="email" value="#{usuarioBean.usuario.email}" maxlength="80"></p:inputText>
+
+						<h:outputLabel for="senha" value="Senha:"></h:outputLabel>
+						<p:inputText id="senha" value="#{usuarioBean.usuario.senha}" style="width:60%" type="password"
+							maxlength="12">
+						</p:inputText>
+
+						<h:outputLabel for="confirmarsenha" value="Senha:"></h:outputLabel>
+						<p:inputText id="confirmarsenha" value="#{usuarioBean.confirmarSenha}" style="width:60%"
+							type="password" maxlength="12">
+						</p:inputText>
+
+					</p:panelGrid>
+
+					<div class="empurrar-botao-cadastrar-atualizar">
+						<p:commandButton value="Cadastrar" action="#{usuarioBean.cadastrar()}" update="@form"
+							rendered="#{usuarioBean.rendEsconderBtnCadastrarUsuario}"></p:commandButton>
+
+						<p:commandButton value="Atualizar" action="#{usuarioBean.atualizar()}" update="@form"
+							rendered="#{usuarioBean.rendEsconderBtnAtualizarUsuario}"></p:commandButton>
+					</div>
+				</div>
+			</p:fieldset>
+		</div>
+
+		<div class="tamanho-caixa-cadastro-editar">
+			<p:fieldset rendered="#{telefoneBean.rendEsconderCadastroTelefone}">
+
+
+				<div class="topo-caixa-cadastro-editar">
+					<h1>Telefone</h1>
+				</div>
+				<div class="formulario">
+
+					<p>Todos os campos são de preenchimento obrigatório.</p>
+
+					<p:panelGrid columns="2">
+
+
+						<h:outputLabel for="ddd" value="DDD:"></h:outputLabel>
+						<p:inputText id="ddd" value="#{telefoneBean.telefone.ddd}" style="width:19%" maxlength="3"
+							minlength="1"></p:inputText>
+
+						<h:outputLabel for="tipo" value="Tipo:"></h:outputLabel>
+						<p:selectOneRadio id="tipo" value="#{telefoneBean.telefone.tipo}" unselectable="true">
+							<f:selectItem itemLabel="Telefone" itemValue="telefone" />
+							<f:selectItem itemLabel="Celular" itemValue="celular" />
+						</p:selectOneRadio>
+
+
+						<h:outputLabel for="numero" value="Número:"></h:outputLabel>
+						<p:inputText id="numero" value="#{telefoneBean.telefone.numero}" style="width:47%"
+							maxlength="9" />
+
+
+
+
+					</p:panelGrid>
+
+					<div class="empurrar-botao-cadastrar-atualizar">
+						<p:commandButton value="Cadastrar" action="#{telefoneBean.cadastrar()}" update="@form"
+							rendered="#{telefoneBean.rendEsconderBtnCadastrarTelefone}"></p:commandButton>
+
+						<p:commandButton value="Atualizar" action="#{telefoneBean.atualizar()}" update="@form"
+							rendered="#{telefoneBean.rendEsconderBtnAtualizarTelefone}"></p:commandButton>
+					</div>
+				</div>
+
+			</p:fieldset>
+
+		</div>
+		
+		<div id="organizar">
+
+		<div id="botao-adicionar-usuario-solto">
+			<p:commandButton value="Cadastrar" title="Adicionar" icon="fa fa-plus"
+				action="#{usuarioBean.aparecerCadastroUsuario()}" update="@form"></p:commandButton>
+		</div>
+		
+		<div id="centralizar-conteudo">
+
+		<div id="tamanho-datatable-usuario">
+
+			<p:dataTable value="#{usuarioBean.usuarios}" var="var_usuario" emptyMessage="Nenhum registro incluído."
+				paginator="true" rows="8" paginatorPosition="bottom">
+
+				<f:facet name="header">
+					Lista de Usuários Cadastrados
+				</f:facet>
+
+				<p:column headerText="Opções" style="text-align:center; width:13%">
+
+					<p:commandButton icon="fa fa-pencil" title="Editar"
+						action="#{usuarioBean.editarNaTela(var_usuario)}" update="@form"></p:commandButton>
+
+
+					<p:commandButton icon="fa fa-trash" title="Excluir" update="@form"
+						action="#{usuarioBean.abrirExclusao()}">
+						<f:setPropertyActionListener value="#{var_usuario}" target="#{usuarioBean.usuario}">
+						</f:setPropertyActionListener>
+					</p:commandButton>
+				</p:column>
+
+				<p:column headerText="ID"  style="width:8%; text-align: center">
+					<h:outputText value="#{var_usuario.id}" />
+				</p:column>
+
+				<p:column headerText="Nome" style="width:25%;">
+					<h:outputText value="#{var_usuario.nome}" />
+				</p:column>
+
+				<p:column headerText="Email"  style="width:25%">
+					<h:outputText value="#{var_usuario.email}" />
+				</p:column>
+
+				<p:column headerText="Senha">
+					<h:outputText value="#{var_usuario.senha}" />
+				</p:column>
+
+				<p:column headerText="Telefone" style="text-align:center">
+
+					<p:commandButton icon="fa fa-list" title="Listar Cadastrados"
+						action="#{telefoneBean.listarTelefoneUsuario(var_usuario)}" update="@form"></p:commandButton>
+					<p:commandButton icon="fa fa-plus" title="Adicionar"
+						action="#{telefoneBean.aparecerCadastroTelefone(var_usuario)}" update="@form"></p:commandButton>
+
+				</p:column>
+
+
+			</p:dataTable>
+		</div>
+
+		<div id="tamanho-datatable-telefone">
+			<p:dataTable rendered="#{telefoneBean.rendEsconderListaTelefone}" value="#{telefoneBean.telefones}"
+				var="var_telefone" emptyMessage="Usuário selecionado não possui telefone cadastrado.">
+				<f:facet name="header">
+					Lista de Telefone do Usuário Selecionado
+				</f:facet>
+
+				<p:column headerText="Opções" style="text-align:center">
+					<p:commandButton icon="fa fa-pencil" title="Editar"
+						action="#{telefoneBean.editarTelefone(var_telefone)}" update="@form"></p:commandButton>
+
+					<p:commandButton icon="fa fa-trash" title="Excluir" update="@form"
+						action="#{telefoneBean.abrirExclusao()}">
+						<f:setPropertyActionListener value="#{var_telefone}" target="#{telefoneBean.telefone}">
+						</f:setPropertyActionListener>
+					</p:commandButton>
+
+				</p:column>
+
+
+				<p:column headerText="DDD" style="width: 15%">
+					<h:outputText value="#{var_telefone.ddd}" />
+				</p:column>
+
+				<p:column headerText="Número">
+					<h:outputText value="#{var_telefone.numero}" />
+				</p:column>
+
+				<p:column headerText="Tipo" style="width: 21%">
+					<h:outputText value="#{var_telefone.tipo}" />
+				</p:column>
+
+
+			</p:dataTable>
+
+		</div>
+		
+		</div>
+		
+		</div>
+
+		<div id="sair">
+			<h:outputLabel value="#{usuarioBean.retornaNome()}"></h:outputLabel>
+			<h:commandLink value="deslogar" actionListener="#{autenticadorBean.registraSaida()}" />
+		</div>
+
+
+		<p:dialog modal="true" widgetVar="DialogVarConfirmacao" minHeight="40" update="@form" draggable="false"
+			resizable="false">
+			<h:panelGrid columns="2" update="@form">
+				<i class="fa fa-check" style="font-size: 20px; color: green;"> </i>
+				<h:outputText value="#{usuarioBean.mensagem}" update="@form" />
+			</h:panelGrid>
+		</p:dialog>
+
+		<p:dialog modal="true" widgetVar="DialogVarAlerta" minHeight="40" draggable="false" resizable="false">
+			<h:panelGrid columns="2">
+				<i class="fa fa-exclamation-triangle" style="font-size: 20px; color: orange"> </i>
+				<h:outputText value="#{usuarioBean.mensagem}" />
+			</h:panelGrid>
+		</p:dialog>
+
+
+		<p:dialog modal="true" widgetVar="DialogVarErro" minHeight="40" draggable="false" resizable="false">
+			<h:panelGrid columns="2">
+				<i class="fa fa-exclamation-circle" style="font-size: 20px; color: red"> </i>
+				<h:outputText value="#{usuarioBean.mensagem}" />
+			</h:panelGrid>
+		</p:dialog>
+
+
+		<p:dialog header="Deseja realmente excluir este registro?" modal="true" widgetVar="DialogVarAlertaExclusao"
+			minHeight="40" draggable="false" resizable="false">
+
+			<h:panelGrid columns="2" style="text-align: center; margin: 0 auto">
+
+				<h:outputLabel value="ID:" style="font-weight: bold;"></h:outputLabel>
+				<h:outputLabel value="#{usuarioBean.usuario.id}" readonly="true" />
+				<h:outputLabel value="Nome:" style="font-weight: bold"></h:outputLabel>
+				<h:outputLabel value="#{usuarioBean.usuario.nome}" readonly="true" />
+
+
+				<p:commandButton style="margin-top:10px" id="btnSim" value="Sim"
+					oncomplete="PF('DialogVarAlertaExclusao').hide(); retun false;" action="#{usuarioBean.deletar()}"
+					update="@form"></p:commandButton>
+				<p:commandButton style="margin-top:10px" id="btnNao" value="Não"
+					onclick="PF('DialogVarAlertaExclusao').hide();" type="button"></p:commandButton>
+			</h:panelGrid>
+
+		</p:dialog>
+
+
+
+
+		<p:dialog modal="true" widgetVar="DialogVarConfirmacaoTelefone" minHeight="40" draggable="false"
+			resizable="false">
+			<h:panelGrid columns="2">
+				<i class="fa fa-check" style="font-size: 20px; color: green"> </i>
+				<h:outputText value="#{telefoneBean.mensagem}" />
+			</h:panelGrid>
+		</p:dialog>
+
+		<p:dialog modal="true" widgetVar="DialogVarAlertaTelefone" minHeight="40" draggable="false" resizable="false">
+			<h:panelGrid columns="2">
+				<i class="fa fa-exclamation-triangle" style="font-size: 20px; color: orange"> </i>
+				<h:outputText value="#{telefoneBean.mensagem}" />
+			</h:panelGrid>
+		</p:dialog>
+
+		<p:dialog modal="true" widgetVar="DialogVarErroTelefone" minHeight="40" draggable="false" resizable="false">
+			<h:panelGrid columns="2">
+				<i class="fa fa-exclamation-circle" style="font-size: 20px; color: red"> </i>
+				<h:outputText value="#{telefoneBean.mensagem}" />
+			</h:panelGrid>
+		</p:dialog>
+
+		<p:dialog header="Deseja realmente excluir este número?" modal="true"
+			widgetVar="DialogVarAlertaExclusaoTelefone" minHeight="40" maxWidth="20" draggable="false"
+			resizable="false">
+			<h:panelGrid columns="2" style="text-align: center; margin: 0 auto">
+
+				<h:outputLabel value="DDD:" style="font-weight: bold;"></h:outputLabel>
+				<h:outputLabel value="#{telefoneBean.telefone.ddd}" readonly="true" />
+				<h:outputLabel value="Tipo:" style="font-weight: bold"></h:outputLabel>
+				<h:outputLabel value="#{telefoneBean.telefone.tipo}" readonly="true" />
+				<h:outputLabel value="Número:" style="font-weight: bold"></h:outputLabel>
+				<h:outputLabel value="#{telefoneBean.telefone.numero}" readonly="true" style="margin-left: 10px;" />
+
+
+				<p:commandButton style="margin-top:10px" id="btnnSim" value="Sim"
+					oncomplete="PF('DialogVarAlertaExclusao').hide(); retun false;" action="#{telefoneBean.deletar()}"
+					update="@form"></p:commandButton>
+				<p:commandButton style="margin-top:10px" id="btnnNao" value="Não"
+					onclick="PF('DialogVarAlertaExclusaoTelefone').hide();" type="button"></p:commandButton>
+			</h:panelGrid>
+		</p:dialog>
+
+
+
+
+
+
+
+
+
+
+	</h:form>
+
+
+
+
+
+
+
+</h:body>
+
+
+
+
+
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Login</title>
+	<link rel="stylesheet" href="css/CSS.css" type="text/css" />
+</h:head>
+
+
+<h:body id="login-adm">
+	<h:form>
+
+
+
+		<div id="bg-login-adm">
+			<div id="caixa-login-adm">
+				<div id="topo-login-adm">
+					<h2>Login</h2>
+				</div>
+				<div id="formulario-login">
+
+
+
+					<h:outputLabel for="email" value="EMAIL:" style="margin:0 20px; color: white"></h:outputLabel>
+					<p:inputText id="email" value="#{autenticadorBean.user.email}"></p:inputText>
+					<br />
+					<h:outputLabel for="senha" value="SENHA:" style="margin: 0 18px; color: white"></h:outputLabel>
+					<p:inputText id="senha" value="#{autenticadorBean.user.senha}" style="width:60%; margin: 15px 0; "
+						type="password" maxlength="12">
+					</p:inputText>
+
+					<br />
+					<p:commandButton value="Entrar" id="botao-entrar" action="#{autenticadorBean.autentica()}"
+						update="@form" style="margin-left: 200px;"
+						styleClass="ui-button-textt-only ui-button-text teste"></p:commandButton>
+
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+		<p:dialog modal="true" widgetVar="DialogVarAlerta" minHeight="40" draggable="false" resizable="false">
+			<h:panelGrid columns="2">
+				<i class="fa fa-exclamation-triangle" style="font-size: 20px; color: orange"> </i>
+				<h:outputText value="#{autenticadorBean.mensagem}" />
+			</h:panelGrid>
+		</p:dialog>
+
+
+
+
+	</h:form>
+
+
+
+
+
+
+
+</h:body>
+
+
+
+
+
+</html>
